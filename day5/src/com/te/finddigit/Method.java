@@ -1,32 +1,21 @@
 package com.te.finddigit;
 
 public class Method {
-	static String findNoDigits(double dou) {
-
-		String str = Double.toString(dou);
-		int n = str.indexOf(".");
-
-		String str1 = str.substring(0, n);
-		String str2 = str.substring(n + 1);
-
-		int modi = Integer.parseInt(str2);
-
-		for (int i = 0; i < str2.length(); i++) {
-			int rem = modi % 10;
-
-			if (rem == 0)
-				modi = modi / 10;
-
-			str2 = Integer.toString(modi);
+	public static String findNoDigits(double a) {// 843.21
+		String statement1 = "" + a;// 843.21
+		String statement2 = "";
+		int first = 0;
+		int last = 0;
+		for (int i = 0; i < statement1.length(); i++){// i=0;i<6;i++
+		     //i-->0=8,1=4,2=3,3=.,4=2,5=1
+			if (statement1.charAt(i) == '.') {
+				first = i;//3--->(843)
+				last = statement1.length() - 1 - i;//last=6-1-3=2-->(21)
+				break;
+			}
 		}
-		int len1 = str1.length();
-		int len2 = str2.length();
-
-		String res1 = Integer.toString(len1);
-		String res2 = ":";
-		String res3 = Integer.toString(len2);
-		String result = res1 + res2 + res3;
-
-		return result;
+		statement2 = first + ":" + last;//3:2
+		return statement2;
 	}
+
 }
